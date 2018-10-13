@@ -88,7 +88,7 @@ minetest.register_node("tigris_underworld:lightwood_sapling", {
         return not grow(vector.add(pos, vector.new(0, -1, 0)), true)
     end,
     on_construct = function(pos)
-        minetest.get_node_timer(pos):start(math.random(200, 1200))
+        minetest.get_node_timer(pos):start(math.random(120, 600))
     end,
 })
 
