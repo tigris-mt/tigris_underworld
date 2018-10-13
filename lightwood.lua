@@ -46,17 +46,28 @@ minetest.register_node("tigris_underworld:lightwood", {
     sounds = default.node_sound_wood_defaults(),
 })
 
-if minetest.get_modpath("stairs") then
+local d = minetest.registered_nodes["tigris_underworld:lightwood"]
+if minetest.global_exists("stairs") then
     stairs.register_stair_and_slab(
         "lightwood",
         "tigris_underworld:lightwood",
-        {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
-        {"tigris_underworld_lightwood.png"},
+        d.groups,
+        d.tiles,
         "Lightwood Stair",
         "Lightwood Slab",
-        default.node_sound_wood_defaults(),
+        d.sounds,
         false
     )
+end
+
+if minetest.global_exists("stairsplus") then
+    stairsplus:register_all("tigris_underworld", "lightwood", "tigris_underworld:lightwood", {
+        description = d.description,
+        groups = table.copy(d.groups),
+        tiles = d.tiles,
+        light_source = d.light_source,
+        sounds = d.sounds,
+    })
 end
 
 minetest.register_node("tigris_underworld:lightwood_sapling", {
