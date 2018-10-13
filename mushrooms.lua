@@ -21,7 +21,7 @@ minetest.register_node("tigris_underworld:mushroom_blue", {
     tiles = {"tigris_underworld_mushroom_blue.png"},
     drawtype = "plantlike",
     paramtype = "light",
-    light_source = 7,
+    light_source = 6,
     sunlight_propagates = true,
     buildable_to = true,
     walkable = false,
@@ -31,6 +31,24 @@ minetest.register_node("tigris_underworld:mushroom_blue", {
     selection_box = {
         type = "fixed",
         fixed = {-4 / 16, -8 / 16, -4 / 16, 4 / 16, 3 / 16, 4 / 16},
+    }
+})
+
+minetest.register_node("tigris_underworld:mushroom_pink", {
+    description = "Pink Mushroom",
+    tiles = {"tigris_underworld_mushroom_pink.png"},
+    drawtype = "plantlike",
+    paramtype = "light",
+    light_source = 7,
+    sunlight_propagates = true,
+    buildable_to = true,
+    walkable = false,
+    groups = {snappy = 3, attached_node = 1, flammable = 1, tigris_underworld_mushroom = 1},
+    sounds = default.node_sound_leaves_defaults(),
+    on_use = minetest.item_eat(2),
+    selection_box = {
+        type = "fixed",
+        fixed = {-4 / 16, -8 / 16, -4 / 16, 4 / 16, 7 / 16, 4 / 16},
     }
 })
 
@@ -53,12 +71,12 @@ minetest.register_abm{
     end,
 }
 
-local d = {"tigris_underworld:mushroom_green", "tigris_underworld:mushroom_blue"}
+local d = {"tigris_underworld:mushroom_green", "tigris_underworld:mushroom_blue", "tigris_underworld:mushroom_pink"}
 
 minetest.register_on_generated(function(minp, maxp)
     local iron = minetest.find_nodes_in_area_under_air(minp, maxp, {"default:stone_with_iron"})
     for _,pos in ipairs(iron) do
-        if math.random() < 0.1 then
+        if math.random() < 0.25 then
             minetest.set_node(vector.add(pos, vector.new(0, 1, 0)), {name = d[math.random(#d)]})
         end
     end
