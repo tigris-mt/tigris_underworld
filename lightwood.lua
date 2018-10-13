@@ -81,7 +81,7 @@ minetest.register_node("tigris_underworld:lightwood_sapling", {
     walkable = false,
     selection_box = {
         type = "fixed",
-        fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 7 / 16, 4 / 16}
+        fixed = {-4 / 16, -8 / 16, -4 / 16, 4 / 16, 7 / 16, 4 / 16}
     },
     groups = {snappy = 2, dig_immediate = 3, attached_node = 1, sapling = 1, flammable = 2},
     on_timer = function(pos)
