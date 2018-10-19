@@ -99,6 +99,7 @@ minetest.register_node("tigris_underworld:lightwood_pod", {
     paramtype = "light",
     sunlight_propagates = true,
     light_source = 5,
+    is_ground_content = false,
     sounds = default.node_sound_wood_defaults(),
     groups = {snappy = 2, dig_immediate = 3, flammable = 2},
     node_box = {
