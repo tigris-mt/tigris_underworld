@@ -133,3 +133,10 @@ minetest.register_craft{
         {"tigris_underworld:lightwood_trunk"},
     },
 }
+
+minetest.register_craft{
+    output = "default:paper 2",
+    recipe = {
+        {"tigris_underworld:lightwood_sapling", "tigris_underworld:lightwood", "tigris_underworld:lightwood_sapling"},
+    },
+}
